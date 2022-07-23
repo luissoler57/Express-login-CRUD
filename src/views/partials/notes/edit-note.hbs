@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <card class="card-header">
+                <h3>Edit Note</h3>
+            </card>
+            <div class="card-body">
+                <form action="/notes/{{viewNote._id}}/edit-note?_method=PUT" method="POST">
+                    <input type="hidden" name="_method" value="PUT">
+                    <div class="form-group mb-2">
+                        <input type="text" name="title" class="form-control" placeholder="Title"
+                            value="{{viewNote.title}}">
+                    </div>
+                    <div class="form-group mb-2">
+                        <textarea name="description" class="form-control">{{viewNote.description}}</textarea>
+                    </div>
+                    <button class="btn btn-danger form-control text-white" type="submit">
+                        <i class="bi bi-arrow-up-right-circle-fill"></i>
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

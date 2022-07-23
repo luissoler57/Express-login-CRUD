@@ -1,0 +1,35 @@
+<div class="row">
+    {{#each notesSee}}
+    <div class="col-12 col-md-6 col-lg-4 ">
+        <div class="card mb-1 bg-dark text-bg-dark">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{title}} <a href="/notes/{{_id}}/edit">
+                        <i class="bi bi-pencil-square text-danger"></i>
+                    </a>
+                </h4>
+                <p>{{description}}</p>
+                <form action="/notes/{{_id}}/delete?_method=DELETE" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger" type="submit">
+                        <i class="bi bi-trash3 text-dark" type></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="card bg-dark text-bg-dark d-flex justify-content-center">
+        <div class="card-body">
+            <h1>Hello {{user.name}}</h1>
+            <p class="lead">
+                There are not notes yet.
+            </p>
+            <a href="/notes/add" class="btn btn-danger text-dark">
+                <i class="bi bi-plus-square"></i>
+                Create Note
+            </a>
+        </div>
+    </div>
+    {{/each}}
+</div>
