@@ -7,6 +7,7 @@ import {
   controllerSignUp,
   controllerSignUpPost,
 } from '../controllers/usersController.js';
+import { validateCreate } from '../validator/indexValidator.js';
 
 //* Initialization
 const usersRoutes = Router();
@@ -17,7 +18,7 @@ usersRoutes.post('/users/signin', controllerSignInAuth);
 
 //! User Sign Up
 usersRoutes.get('/users/signup', controllerSignUp);
-usersRoutes.post('/users/signup', controllerSignUpPost);
+usersRoutes.post('/users/signup', validateCreate, controllerSignUpPost);
 
 //! User Logout
 usersRoutes.get('/users/logout', controllerLogout);
