@@ -1,6 +1,6 @@
-const helpers = {};
+const authHelpers = {};
 
-helpers.isAuthenticated = (req, res, next) => {
+authHelpers.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
@@ -8,4 +8,4 @@ helpers.isAuthenticated = (req, res, next) => {
   res.redirect('/users/signin');
 };
 
-export default helpers;
+export default authHelpers;

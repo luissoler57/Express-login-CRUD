@@ -8,37 +8,42 @@ import {
   controllerUpdateNote,
   controllerViewNotes,
 } from '../controllers/notesContoller.js';
-import helpers from '../helpers/auth.js';
+import authHelpers from '../helpers/authHelpers.js';
+import { validateCreateNote } from '../validator/notesValidator.js';
 //* Initialization
 const notesRoutes = Router();
-
 //! Routes note
 //TODO: route create note
-notesRoutes.get('/notes/add', helpers.isAuthenticated, controllerCreateNote);
+notesRoutes.get(
+  '/notes/add',
+  authHelpers.isAuthenticated,
+  controllerCreateNote
+);
 //TODO: Path to save notes post method
 notesRoutes.post(
   '/notes/new-notes',
-  helpers.isAuthenticated,
+  authHelpers.isAuthenticated,
+  validateCreateNote,
   controllerNewNote
 );
 //TODO: Route controller to view notes
-notesRoutes.get('/notes', helpers.isAuthenticated, controllerViewNotes);
+notesRoutes.get('/notes', authHelpers.isAuthenticated, controllerViewNotes);
 //TODO: Route controller for note updates
 notesRoutes.get(
   '/notes/:id/edit',
-  helpers.isAuthenticated,
+  authHelpers.isAuthenticated,
   controllerUpdateNote
 );
 //TODO: Route controller for note update put method
 notesRoutes.put(
   '/notes/:id/edit-note',
-  helpers.isAuthenticated,
+  authHelpers.isAuthenticated,
   controllerSaveNote
 );
 //TODO: Route controller for note remove delete method
 notesRoutes.delete(
   '/notes/:id/delete',
-  helpers.isAuthenticated,
+  authHelpers.isAuthenticated,
   controllerDeleteNote
 );
 

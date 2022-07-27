@@ -1,5 +1,5 @@
 import { check } from 'express-validator';
-import { validateResult } from '../helpers/validationHelpers.js';
+import { validateResult } from '../helpers/userHelpers.js';
 import UserSchema from '../models/userModel.js';
 
 export const validateCreate = [

@@ -7,7 +7,7 @@ import {
   controllerSignUp,
   controllerSignUpPost,
 } from '../controllers/usersController.js';
-import { validateCreate } from '../validator/indexValidator.js';
+import { validateCreate } from '../validator/userValidator.js';
 
 //* Initialization
 const usersRoutes = Router();

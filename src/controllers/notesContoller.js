@@ -9,41 +9,11 @@ export const controllerCreateNote = (_req, res) => {
 
 //TODO: Route to save notes
 export const controllerNewNote = async (req, res) => {
-  const { title, description } = req.body;
-  // ! Manejo de errores
-  const errors = [];
-  //* Si el campo titulo esta vacio muestra un mensaje de error
-  if (!title) {
-    errors.push({ text: 'Please, Write a title' });
-  }
-  //* Si el campo descripcion esta vacio muestra un mensaje de error
-  if (!description) {
-    errors.push({ text: 'Please, Write a Description' });
-  }
-  //* Si el arreglo de 'errors' tiene errores, renderiza nuevamente la pagina con los errores
-  if (errors.length > 0) {
-    res.render('partials/notes/new-notes', {
-      errors,
-      title,
-      description,
-    });
-  } else {
-    //* Guardamos la nota y validamos errores
-    try {
-      const newNote = new NoteSchema(req.body);
-      newNote.user = req.user.id;
-      await newNote.save();
-      req.flash('success_msg', 'Note added Successfully');
-      res.redirect('/notes/');
-    } catch (E11000) {
-      errors.push({ text: 'Please, Note duplicate' });
-      res.render('partials/notes/new-notes', {
-        errors,
-        title,
-        description,
-      });
-    }
-  }
+  const newNote = new NoteSchema(req.body);
+  newNote.user = req.user.id;
+  await newNote.save();
+  req.flash('success_msg', 'Note added Successfully');
+  res.redirect('/notes/');
 };
 //TODO: Route controller to view notes
 export const controllerViewNotes = async (req, res) => {
